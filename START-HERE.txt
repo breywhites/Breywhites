@@ -33,20 +33,36 @@ Short version:
    - Or simply send those two values to Claude and get the folder back ready to upload.
    - Never share or paste the "secret" key or your database password anywhere.
 
-4. PUT IT ONLINE (cloudflare.com, free)
+4. PUT IT ONLINE — pick ONE host. Either works; the website folder is the same either way.
+   Your Supabase account, and this hosting account, don't need to share an email — they're
+   separate services and never need to match.
+
+   OPTION A — Cloudflare Pages (cloudflare.com, free)
    - Workers & Pages → Create application → Get started → Drag and drop your files.
-   - Project name: breywhites → drag in the "website" folder → Deploy site.
+   - Project name: breywhites → drag in the "website" folder (not the outer breywhites-live
+     folder — it must be the folder that has index.html directly inside it) → Deploy site.
    - Your site is now at https://breywhites.pages.dev (or the name Cloudflare shows).
+   - Updating later: your breywhites project → Create deployment → drag in the new website
+     folder. Keep your own config.js (copy it into the new folder first).
+
+   OPTION B — Vercel (vercel.com, free)
+   - Go to vercel.com/drop.
+   - Drag in the "website" folder itself (not breywhites-live) — it needs index.html at the
+     top level, or you'll get a 404 on the homepage.
+   - Choose a team, name the project "breywhites", press Deploy.
+   - Your site is now at https://breywhites-<something>.vercel.app.
+   - Heads up: every drop makes a NEW project with a new web address — it doesn't update the
+     old one. To update later, either drop again and switch to the new address, or connect
+     the project to GitHub inside Vercel so updates redeploy in place (ask Claude if you'd
+     like a GitHub repo set up for this).
 
 5. LAST SETTING
    - Supabase → Authentication → URL Configuration
-     Site URL: https://breywhites.pages.dev
-     Redirect URLs → Add: https://breywhites.pages.dev/admin
+     Site URL: your site's address from step 4 (either https://breywhites.pages.dev or your
+     vercel.app address)
+     Redirect URLs → Add: that same address + /admin
      (lets "Forgot password?" emails bring you back to your admin)
 
 6. CHECK
    - Open your site → scroll to the bottom → "Studio login" → sign in.
    - Settings: add your UPI ID. Calendar: mark a few dates free. They appear on the homepage.
-
-Updating later: Cloudflare → your breywhites project → Create deployment → drag in the new
-website folder. Keep your own config.js (copy it into the new folder first).
