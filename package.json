@@ -1,0 +1,14 @@
+{
+  "name": "breywhites",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "bun scripts/build.ts",
+    "preview": "bun scripts/build.ts --preview",
+    "serve": "bun scripts/serve.ts dist 4173"
+  },
+  "dependencies": {
+    "react": "19.2.6",
+    "react-dom": "19.2.6"
+  }
+}
