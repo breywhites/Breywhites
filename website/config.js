@@ -4,7 +4,7 @@
      supabaseAnonKey  → the Publishable key (starts with sb_publishable_)
    While both are empty the site shows sample content and the admin runs in preview mode. */
 window.BW_CONFIG = {
-  supabaseUrl: '',
-  supabaseAnonKey: '',
+  supabaseUrl: 'https://owzeuzrkqsxuearzwrfr.supabase.co',
+  supabaseAnonKey: 'sb_publishable_TOkUPM92cyLe4TKEQbJ4MA_6p-w4Zpm',
   router: 'path'
 };
