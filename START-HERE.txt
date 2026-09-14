@@ -1,0 +1,52 @@
+BREYWHITES — PUTTING YOUR WEBSITE LIVE
+======================================
+
+In this folder
+  website/                     the whole website + studio admin (upload this folder)
+  website/config.js            where your 2 Supabase values go
+  database/1-schema.sql        creates your database (run once)
+  database/2-make-me-admin.sql gives your login access to the admin
+
+The full illustrated guide is the "Breywhites Go-Live Guide" page Claude shared with you.
+Short version:
+
+1. DATABASE (supabase.com, free)
+   - New project: name "Breywhites", region "South Asia (Mumbai)". Save the database password somewhere safe.
+   - SQL Editor → New query → paste everything from database/1-schema.sql → Run.
+     (Easier: the Go-Live Guide page has a "Copy the database setup" button — no file to open.)
+     If a box warns about a "destructive operation", choose the option that runs it anyway.
+     Wait for "Success. No rows returned". Table Editor should now list tables like admins, photos.
+
+2. YOUR LOGIN
+   - Authentication → Users → Add user → Create new user.
+     Email: Breywhites7@gmail.com, a strong password, tick "Auto Confirm User".
+   - SQL Editor → New query → paste database/2-make-me-admin.sql → Run.
+     The result shows your email + "is admin".
+     If it says  relation "public.admins" does not exist  → step 1 hasn't run in this project yet.
+     Do step 1 first, then run this again.
+
+3. CONNECT THE WEBSITE
+   - Press "Connect" at the top of your Supabase project.
+     Copy the Project URL and the Publishable key (starts with sb_publishable_).
+   - Open website/config.js in TextEdit (Mac) or Notepad (Windows). Paste each value between its
+     existing quote marks (don't retype the quotes), then save.
+   - Or simply send those two values to Claude and get the folder back ready to upload.
+   - Never share or paste the "secret" key or your database password anywhere.
+
+4. PUT IT ONLINE (cloudflare.com, free)
+   - Workers & Pages → Create application → Get started → Drag and drop your files.
+   - Project name: breywhites → drag in the "website" folder → Deploy site.
+   - Your site is now at https://breywhites.pages.dev (or the name Cloudflare shows).
+
+5. LAST SETTING
+   - Supabase → Authentication → URL Configuration
+     Site URL: https://breywhites.pages.dev
+     Redirect URLs → Add: https://breywhites.pages.dev/admin
+     (lets "Forgot password?" emails bring you back to your admin)
+
+6. CHECK
+   - Open your site → scroll to the bottom → "Studio login" → sign in.
+   - Settings: add your UPI ID. Calendar: mark a few dates free. They appear on the homepage.
+
+Updating later: Cloudflare → your breywhites project → Create deployment → drag in the new
+website folder. Keep your own config.js (copy it into the new folder first).
